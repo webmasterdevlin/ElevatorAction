@@ -6,4 +6,5 @@ public interface IFeatures
     string GetLiftDirection();
     int GetEstimatedTimeOfWaiting(int floorsDifference, int floorIntervalInSeconds);
     void SetFloorOnEmergency(int floor);
+    void EnableMultiFloorRequests();
 }

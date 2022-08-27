@@ -17,6 +17,8 @@ public class Elevator : IFeatures
     private int TimeOfArrival { get; set; }
     private int FloorWithEmergency { get; set; }
     private bool HasSetFloorWithEmergency { get; set; }
+    private List<int> MidRequestedFloors { get; set; } = new();
+    private bool HasEnableMultiFloorRequests { get; set; }
 
     public void SetFloorOnEmergency(int floor)
     {
@@ -33,16 +35,15 @@ public class Elevator : IFeatures
     {
         return floorsDifference * FloorIntervalInSeconds;
     }
+    
+    public void EnableMultiFloorRequests() => HasEnableMultiFloorRequests = true;
 
 
     public void GoToSpecifiedFloor()
     {
         if (CurrentFloor == DestinationFloor)
-        {
             OpenDoors();
-        }
-
-
+        
         else
         {
             if (IsDoorOpen)
@@ -53,12 +54,21 @@ public class Elevator : IFeatures
             Console.WriteLine($"The {DestinationFloor} floor is {TimeOfArrival} seconds away");
             for (var i = 0; i < floorsDifference; i++)
             {
+                if (HasEnableMultiFloorRequests)
+                    GenerateNewRequestedFloor();
+
                 if (FloorWithEmergency == CurrentFloor)
                 {
                     DestinationFloor = CurrentFloor;
                     Console.WriteLine($"Emergency on {FloorWithEmergency} floor! Door will open immediately!");
                     OpenDoors();
                     return;
+                }
+
+                if (MidRequestedFloors.Contains(CurrentFloor))
+                {
+                    Console.WriteLine($"Stops at {CurrentFloor} floor");
+                    OpenDoors();
                 }
 
                 Step();
@@ -96,6 +106,15 @@ public class Elevator : IFeatures
             --CurrentFloor;
         else
             ++CurrentFloor;
+    }
+
+    private void GenerateNewRequestedFloor()
+    {
+        var newMidRequestedFloor = new Random().Next(1, LastFloor);
+        if (MidRequestedFloors.Contains(newMidRequestedFloor)) return;
+        
+        MidRequestedFloors.Add(newMidRequestedFloor);
+        Console.WriteLine($"{newMidRequestedFloor} floor was pressed.");
     }
 
     private void OpenDoors()
