@@ -31,7 +31,7 @@ public class Elevator : IFeatures
         return CurrentFloor > DestinationFloor ? "Down" : "Up";
     }
 
-    public int GetEstimatedTimeOfWaiting(int floorsDifference, int floorIntervalInSeconds)
+    public int GetEstimatedTimeOfWaiting(int floorsDifference)
     {
         return floorsDifference * FloorIntervalInSeconds;
     }
