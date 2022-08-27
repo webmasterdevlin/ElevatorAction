@@ -1,9 +1,14 @@
-﻿using ElevatorAction;
+﻿using ElevatorAction.Parts;
 
-var e = new Elevator(9);
-e.SetUserFloorOrigin(1);
-// e.SetFloorOnEmergency(6); // uncomment this line to see the difference
-e.EnableMultiFloorRequests();
 
-e.GoToFloor(8);
+const int maxFloor = 10;
+
+var elevatorCar = new ElevatorCar();
+elevatorCar.SetFloorOnEmergency(9); // uncomment to set emergency floor
+
+var elevatorMachine = new ElevatorMachine(maxFloor, elevatorCar);
+elevatorMachine.SetUserFloorOrigin(0);
+elevatorMachine.EnableMultiFloorRequests(); // uncomment to enable multi-floor requests
+elevatorMachine.GoToFloor(10);
+
 Console.ReadLine();
