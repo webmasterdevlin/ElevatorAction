@@ -19,7 +19,7 @@ public class ElevatorMachineDriver : IElevatorMachineDriver
     private int LastFloor { get; }
     private bool HasEnableMultiFloorRequests { get; set; }
 
-    public string GetLiftDirection()
+    public string GetElevatorDirection()
     {
         return CurrentFloor > DestinationFloor ? "Down" : "Up";
     }
@@ -97,7 +97,7 @@ public class ElevatorMachineDriver : IElevatorMachineDriver
     private void Step()
     {
         Console.WriteLine($"On {CurrentFloor} floor");
-        Console.WriteLine($"Going {GetLiftDirection()}");
+        Console.WriteLine($"Going {GetElevatorDirection()}");
 
         if (CurrentFloor > DestinationFloor)
             --CurrentFloor;

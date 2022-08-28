@@ -2,7 +2,7 @@ namespace ElevatorAction.Contracts;
 
 public interface IElevatorMachineDriver
 {
-    string GetLiftDirection();
+    string GetElevatorDirection();
     int GetEstimatedTimeOfWaiting(int floorsDifference, int floorIntervalInSeconds);
     void EnableMultiFloorRequests();
     void GoToSpecifiedFloor();
