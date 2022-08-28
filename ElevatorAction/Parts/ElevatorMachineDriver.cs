@@ -2,12 +2,12 @@ using ElevatorAction.Contracts;
 
 namespace ElevatorAction.Parts;
 
-public class ElevatorMachineDriverDriver : IElevatorMachineDriver
+public class ElevatorMachineDriver : IElevatorMachineDriver
 {
     private const int FloorIntervalInSeconds = 2;
     private readonly ElevatorCar _elevatorCar;
 
-    public ElevatorMachineDriverDriver(int floors, ElevatorCar elevatorCar)
+    public ElevatorMachineDriver(int floors, ElevatorCar elevatorCar)
     {
         LastFloor = floors;
         elevatorCar.LastFloor = floors;

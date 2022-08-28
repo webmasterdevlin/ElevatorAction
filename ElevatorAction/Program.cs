@@ -9,7 +9,7 @@ const int destinationFloor = 10;
 var elevatorCar = new ElevatorCar();
 elevatorCar.SetFloorOnEmergency(emergencySimulationFloor); // uncomment to set emergency floor
 
-var machineDriver = new ElevatorMachineDriverDriver(maxFloor, elevatorCar);
+var machineDriver = new ElevatorMachineDriver(maxFloor, elevatorCar);
 machineDriver.SetUserFloorOrigin(originFloor);
 machineDriver.EnableMultiFloorRequests(); // uncomment to enable multi-floor requests
 machineDriver.GoToFloor(destinationFloor);
