@@ -25,7 +25,7 @@ public class ElevatorCar : IElevatorCar
         Console.WriteLine($"{newMidRequestedFloor} floor was pressed.");
     }
 
-    public void OpenDoors()
+    public void OpenDoor()
     {
         IsDoorOpen = true;
         Console.WriteLine("Door is opening");

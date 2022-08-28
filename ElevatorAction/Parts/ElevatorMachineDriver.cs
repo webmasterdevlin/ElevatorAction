@@ -2,12 +2,12 @@ using ElevatorAction.Contracts;
 
 namespace ElevatorAction.Parts;
 
-public class ElevatorMachine : IElevatorMachine
+public class ElevatorMachineDriverDriver : IElevatorMachineDriver
 {
     private const int FloorIntervalInSeconds = 2;
     private readonly ElevatorCar _elevatorCar;
 
-    public ElevatorMachine(int floors, ElevatorCar elevatorCar)
+    public ElevatorMachineDriverDriver(int floors, ElevatorCar elevatorCar)
     {
         LastFloor = floors;
         elevatorCar.LastFloor = floors;
@@ -38,7 +38,7 @@ public class ElevatorMachine : IElevatorMachine
     {
         if (CurrentFloor == DestinationFloor)
         {
-            _elevatorCar.OpenDoors();
+            _elevatorCar.OpenDoor();
         }
 
         else
@@ -59,21 +59,21 @@ public class ElevatorMachine : IElevatorMachine
                     DestinationFloor = CurrentFloor;
                     Console.WriteLine(
                         $"Emergency on {_elevatorCar.FloorWithEmergency} floor! Door will open immediately!");
-                    _elevatorCar.OpenDoors();
+                    _elevatorCar.OpenDoor();
                     return;
                 }
 
                 if (_elevatorCar.MidRequestedFloors.Contains(CurrentFloor))
                 {
                     Console.WriteLine($"Stops at {CurrentFloor} floor");
-                    _elevatorCar.OpenDoors();
+                    _elevatorCar.OpenDoor();
                 }
 
                 Step();
             }
 
             Console.WriteLine($"You are on {CurrentFloor} floor");
-            _elevatorCar.OpenDoors();
+            _elevatorCar.OpenDoor();
         }
     }
 

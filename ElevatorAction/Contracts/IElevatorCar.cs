@@ -4,6 +4,6 @@ public interface IElevatorCar
 {
     void SetFloorOnEmergency(int floor);
     void GenerateNewRequestedFloor();
-    void OpenDoors();
+    void OpenDoor();
     void ShuttingDoor();
 }

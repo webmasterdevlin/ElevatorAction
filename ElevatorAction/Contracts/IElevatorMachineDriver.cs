@@ -1,6 +1,6 @@
 namespace ElevatorAction.Contracts;
 
-public interface IElevatorMachine
+public interface IElevatorMachineDriver
 {
     string GetLiftDirection();
     int GetEstimatedTimeOfWaiting(int floorsDifference, int floorIntervalInSeconds);
